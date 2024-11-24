@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Vault - Web Version</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Code Vault</h1>
+    <h2>Add a New Secret</h2>
+    <form action="/add_secret" method="POST">
+        <input type="text" name="name" placeholder="Secret Name" required>
+        <input type="text" name="value" placeholder="Secret Value" required>
+        <button type="submit">Add Secret</button>
+    </form>
+
+    <h2>Retrieve a Secret</h2>
+    <form action="/get_secret" method="POST">
+        <input type="text" name="name" placeholder="Secret Name" required>
+        <button type="submit">Get Secret</button>
+    </form>
+
+    {% if secret %}
+    <h3>Secret for "{{ name }}":</h3>
+    <p>{{ secret }}</p>
+    {% endif %}
+</body>
+</html>
